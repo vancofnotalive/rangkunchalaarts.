@@ -1,0 +1,475 @@
+
+
+html {
+  --page--CH: 100svh;
+  --page--CW: 100svw;
+  /* temprorty forcing it to be svh and svw */
+}
+nav {
+position: fixed;
+top: 0;
+left: 0;
+  width: 100%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10svh;
+  z-index: +999;
+  
+
+}
+nav::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom , #f6f2e9 50%, transparent);
+  z-index: -1;
+  height: 20svh;
+}
+nav .nav-logo {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  width: 20%;
+  background-image: url("./assets/logo.webp");
+  height: 70%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+nav .menu {
+  position: relative;
+  width: 8%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: space-evenly;
+  left: 5%;
+  
+}
+nav .menu .line {
+border-radius: 5px;
+  
+  height: 5%;
+  width: 100%;
+  background-color: rgb(163, 116, 16);
+}
+nav .menu .line:nth-child(2) {
+  width: 80%;
+}
+nav .shop-icon {
+  
+  width: 8%;
+  position: relative;
+  right: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  max-height: 100%;
+}
+.shop-icon svg {
+  width: 80%;
+  aspect-ratio: 1 / 1;
+  stroke: rgb(145, 103, 14) !important;
+}
+.hero-section {
+  position: relative;
+  
+  height: 60svh;
+  width: 100%;
+  background-color: red;
+  background-image: url("./assets/hero-banner.jpeg");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2%;
+  background: linear-gradient(to left , rgb(247, 244, 236) , rgb(248, 248, 248));
+  z-index: +1;
+}
+.hero-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top , rgb(248, 248, 248) 2%, transparent 20%);
+}
+.discover-art {
+  width: 90%;
+  padding: 0 5%;
+  box-sizing: content-box;
+  align-self: center;
+  height: 38svh;
+  margin-top: 2svh;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+.discover-art h1 {
+font-size: calc((100svh + 100svw) / 50);
+font-weight: 400;
+color: #5e5c5c;
+
+}
+.discover-art h2 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: calc((100svh + 100svw) / 85);
+  margin-top: 1svh;
+  font-weight: 500;
+}
+.discover-art-input {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.discover-art input {
+  width: 80%;
+  border: none;
+  outline: none;
+  background-color: none;
+  height: calc((100svh + 100svw) / 40);
+  font-size: calc((100svh + 100svw) / 78);
+  background-color: transparent;
+  border-bottom: 0.1svh solid rgb(145, 103, 14);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  color: #5e5c5c;
+  padding-bottom: 2svh;
+  margin-top: 3svh;
+  box-sizing: content-box;
+  text-indent: 1ch;
+}
+.discover-art-input button {
+  position: absolute !important;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  height: 100%;
+  width: 20%;
+  position: relative;
+  border-bottom: 0.1svh solid rgb(145, 103, 14);
+  color: #5e5c5c;
+  
+}
+.discover-art-input button::after {
+
+}
+.discover-art-input svg {
+  position: absolute;
+  
+  height: 100%;
+  width: 33%;
+}
+.discover-art-input .-custom-search-icon--style-1 {
+  --clear-size: calc((100svh + 100svw) / 78);
+}
+.suggested-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  justify-content: start;
+}
+.suggested-tags h1:first-child {
+  
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: calc((100svh + 100svw) / 83) !important;
+  
+  margin-top: calc((100svh + 100svw) / 116);
+  margin-left: calc((100svh + 100svw) / 116);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-radius: calc(100svh + 100svw);
+  border:  solid calc((100svh + 100svw) / 550) transparent;
+}
+
+.suggested-tag {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: calc((100svh + 100svw) / 83) !important;
+  padding: calc((100svh + 100svw) / 116) calc((100svh + 100svw) / 59);
+  margin-top: calc((100svh + 100svw) / 116);
+  margin-left: calc((100svh + 100svw) / 116);
+text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-radius: calc(100svh + 100svw);
+  border:  solid calc((100svh + 100svw) / 550) rgb(27, 27, 27 , 0.050);
+  color: #5e5c5c;
+}
+.gallery-peak {
+ width: 90%;
+  padding: 0 5%;
+  box-sizing: content-box;
+  align-self: center;
+  height: 38svh;
+  margin-top: 8svh;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  
+}
+.gallery-peak a {
+  position: relative;
+  width: 48%;
+  height: 15svh;
+  overflow: hidden;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1%;
+}
+.gallery-peak a img {
+  min-width: 100%;
+  min-height: 100%;
+}
+.gallery-peak a .overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: +1;
+  background-color: rgba(0 , 0 , 0 , 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 100ms;
+}
+.gallery-peak .overlay h1 {
+  position: relative;
+ font-size: calc((100svh + 100svw) / 70) ;
+ color: white;
+ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ letter-spacing: 1.5px;
+max-width: 95%;
+max-height: 95%;
+text-align: center;
+
+z-index: +1;
+}
+.gallery-peak .overlay h1::after {
+  content: "";
+  transition: 100ms;
+  --h: 0.2svh;
+  height: var(--h);
+  width: 80%;
+  z-index: +2;
+  background-color: white;
+  position: absolute;
+  top: calc(100% + (var(--h) * 2));
+  left: 50%;
+  transform: translate(-50% , 0);
+  border-radius: 2px;
+}
+.gallery-peak a:hover .overlay{
+background-color: rgba(0 , 0 , 0 , 0.3);
+}
+.gallery-peak a:hover img {
+transform: scale(1.1);
+}
+.gallery-peak a:hover .overlay h1::after{
+width: 70%;
+}
+.pieces-showcase {
+  width: 90%;
+  padding: 0 5%;
+}
+.pieces-showcase h1 {
+  font-family: "Raleway", sans-serif;
+  color: rgb(175, 150, 80);
+  font-size: calc((100svh + 100svw) / 80);
+  font-weight: 500;
+}
+.pieces-showcase h2 {
+  position: relative;
+  margin-top: 1.5svh;
+  color: rgb(48, 47, 47 , 0.8);
+  font-size: calc((100svh + 100svw) / 45);
+  font-weight: 400;
+  
+}
+.pieces-showcase h2::after {
+  content: "";
+  position: absolute;
+  --h: 0.2svh;
+  height: var(--h);
+  top: calc(100% + (var(--h) * 4));
+  background-color: rgb(197, 159, 77);
+  width: 15%;
+  left: 0;
+  border-radius: 5px;
+}
+.pieces-showcase p {
+  margin-top: 3svh;
+  font-size: calc((100svh + 100svw) / 80);
+color: rgb(48, 47, 47 , 0.8);
+}
+.art-piece {
+  width: 90%;
+  margin: 0 5%;
+padding: 5%;
+background: linear-gradient(to bottom , white , transparent);
+margin-top: 5svh;
+border-radius: 2px;
+}
+.art-piece .img {
+  position: relative;
+  width: 100%;
+  height: 40svh;
+  overflow: hidden;
+}
+.art-piece .img img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  min-width: 100%;
+  min-height: 100%;
+}
+.art-piece h1 {
+  font-family: "Raleway", sans-serif;
+  font-size: calc((100svh + 100svw) / 55);
+  margin-top: 2svh;
+  font-weight: 600;
+}
+.art-piece p {
+  font-family: "Raleway", sans-serif;
+  font-size: calc((100svh + 100svw) / 82);
+  width: 100%;
+  margin-top: 1svh;
+  font-weight: 500;
+}
+.curator-fav {
+  max-width: 90%;
+  margin: 0 auto;
+  
+  text-align: center;
+  
+  font-size: calc((100svh + 100svw) / 50);
+  font-weight: 400;
+  margin-top: 5svh;
+  color: rgba(0 , 0 , 0 , 0.7);
+}
+.curator-fav-tag {
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: calc((100svh + 100svw) / 85);
+  word-spacing: 2.5px;
+  padding: calc((100svh + 100svw) / 70);
+  border: solid calc((100svh + 100svw) / 550) rgba(0 , 0 , 0 , 0.1);
+  max-width: calc(100% - (((100svh + 100svw) / 70) * 2));
+  text-align: center;
+  width: fit-content;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 2svh;
+border-radius: calc(100svh + 100svw);
+  color: rgba(0 , 0 , 0 , 0.6);
+}
+.curator-fav-tags {
+  width: 95%;
+  
+  padding: 0 2.5%;
+  box-sizing: content-box;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  justify-content: center;
+}
+.curator-fav-tag:hover {
+border-color: rgb(247, 232, 199);
+color: rgb(197, 159, 77);
+}
+.season-pick-heading {
+width: 90%;
+padding: 0 5%;
+box-sizing: content-box;
+margin-top: 5svh;
+
+}
+.season-pick-heading h1 {
+ font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: calc((100svh + 100svw) / 60);
+   max-width: 100%;
+
+}
+.season-pick-heading h1 svg {
+  display: n;
+  width: calc((100svh + 100svw) / 80);
+}
+.season-pick-heading .link {
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: calc((100svh + 100svw) / 80);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  float: right;
+  color: rgb(197, 159, 77);
+}
+.season-pick-heading .link svg {
+  width: calc((100svh + 100svw) / 80) !important;
+  fill: rgb(197, 159, 77) !important;
+}
+.season-pick-heading .link span {
+  margin-right: 0.5ch;
+}
+.season-arts {
+  display: contents;
+}
+.season-arts .art-piece .img {
+  position: relative;
+}
+.season-arts .art-piece p {
+  color: rgb(168, 161, 147);
+}
+.season-arts .art-piece h1 {
+  position: relative;
+  margin-top: 3svh;
+  color: rgb(105, 101, 92);
+}
+.season-arts .art-piece h1::after{
+content: "";
+height: 0.1svh;
+left: 50%;
+transform: translate(-50% , 0);
+width: 110%;
+background-color: rgba(168, 161, 147 , 0.5);
+position: absolute;
+bottom: calc(100% + 1svh);
+
+
+}
+.season-arts .art-piece h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: calc((100svh + 100svw) / 82);
+  width: 100%;
+  margin-top: 1svh;
+  font-weight: 500;
+  color: rgb(134, 129, 119);
+}

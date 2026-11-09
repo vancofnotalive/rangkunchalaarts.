@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Control Pannel</title>
+    <style>
+        html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+* {
+    margin: 0;
+    padding: 0;
+    scrollbar-width: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: none;
+    flex-shrink: 0 !important;
+    
+}
+
+body {
+overflow: hidden;
+
+   height: 100svh !important;
+    --circle_radius: calc(100dvh + 100dvw);
+   
+}
+@media (orientation: portrait) and (max-aspect-ratio: 2/3) {
+    .layout-desktop {
+        display: none !important;
+    }
+
+    .layout-phone {
+        display: flex !important;
+    }
+
+    /* phone */
+}
+
+@media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
+    /* square */
+    .layout-desktop {
+        display: flex !important;
+    }
+
+    .layout-phone {
+        display: none !important;
+    }
+}
+.___layout {
+    display: none;
+    overflow: hidden;
+}
+.layout-desktop {
+    display: flex;
+background-color: aliceblue;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: scroll;
+    align-items: center;
+   
+    
+}
+.layout-phone {
+    overflow: hidden;
+    height: var(---page--CH);
+    width: var(---page--CW);
+
+}
+.nav {
+    position: fixed;
+    --padding: calc((var(---page--CW) + var(---page--CH)) / 150);
+    width: calc(var(---page--CW) - (var(--padding) * 4));
+    height: calc(var(---page--CH) / 15);
+    background: linear-gradient(to right , rgb(36, 115, 218) , rgb(86, 144, 219));
+    padding: var(--padding);
+    margin: var(--padding) 0;
+    border-radius: var(--circle_radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: +999;
+}
+.nav button {
+    position: relative;
+border: none;
+outline: none;
+background-color: transparent;
+padding: calc(var(--padding) / 2);
+margin: 0 calc(var(--padding) / 1.5);
+border-radius: var(--circle_radius);
+cursor: pointer;
+overflow: hidden;
+}
+.nav button::after {
+content: "";
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50% , -50%);
+height: 100%;
+width: 100%;
+opacity: 0;
+transition: opacity 100ms;
+}
+.nav button i {
+    position: relative;
+    z-index: +1;
+    font-size: calc(var(--padding) * 1.3);
+}
+.nav button:hover::after {
+    opacity: 0.5 !important;
+}
+.nav .theme-toggle .dark {
+    
+    color: rgb(68, 67, 67);
+}
+.nav .theme-toggle .dark::after {
+    background-color: rgb(68, 67, 67);
+}
+.nav .theme-toggle .light {
+    
+    color: rgb(68, 67, 67);
+}
+.nav .theme-toggle .light::after {
+    background-color: white;
+}
+.layout-desktop  ._light--active .light::after {
+opacity: 1 !important;
+
+}
+.layout-desktop  ._light--active .dark::after {
+opacity: 0;
+}
+.layout-desktop  ._dark--active .light::after {
+opacity: 0;
+}
+.layout-desktop  ._dark--active .light {
+color: white;
+}
+.layout-desktop  ._dark--active .dark::after {
+opacity: 1 !important;
+}
+.layout-desktop  ._dark--active .dark {
+color: white;
+}
+.nav-heading {
+    color: white;
+}
+.input-text {
+
+}
+.space {
+    width: 100%;
+}
+.spacer-nav {
+    height: calc(var(---nav--CH) * 1.5);
+}
+.input-list {
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(to bottom , rgb(36, 115, 218) , rgb(86, 144, 219));
+    border-radius: 5px;
+    --padding: calc((var(---page--CH) + var(---page--CW)) / 150);
+    padding: var(--padding);
+    margin: var(--padding);
+    display: flex;
+    flex-direction: column;
+}
+.input-list .input-list-head {
+    width: 100%;
+    
+}
+.input-list .input-list-head img {
+    border-radius: 5px;
+    
+}
+
+.input-text {
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(to bottom , rgb(36, 115, 218) , rgb(86, 144, 219));
+    border-radius: 5px;
+    --padding: calc((var(---page--CH) + var(---page--CW)) / 150);
+    padding: var(--padding);
+    margin: var(--padding);
+    display: flex;
+    flex-direction: column;
+}
+.input-single-file {
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(to bottom , rgb(36, 115, 218) , rgb(86, 144, 219));
+    border-radius: 5px;
+    --padding: calc((var(---page--CH) + var(---page--CW)) / 150);
+    padding: var(--padding);
+    margin: var(--padding);
+    display: flex;
+    flex-direction: column;
+}
+.input-gallery-file {
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(to bottom , rgb(36, 115, 218) , rgb(86, 144, 219));
+    border-radius: 5px;
+    --padding: calc((var(---page--CH) + var(---page--CW)) / 150);
+    padding: var(--padding);
+    margin: var(--padding);
+    display: flex;
+    flex-direction: column;
+}
+.content-container {
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(to bottom , rgb(36, 115, 218) , rgb(86, 144, 219));
+    border-radius: 5px;
+    --padding: calc((var(---page--CH) + var(---page--CW)) / 150);
+    padding: var(--padding);
+    margin: var(--padding);
+    display: flex;
+    flex-direction: column;
+}
+
+.token-field {
+    width: 50dvw;
+    --padding: calc((var(---page--CH) + var(---page--CW)) / 100);
+    padding: var(--padding);
+    background-color: red;
+    border-radius: 15px;
+    background: linear-gradient(to right , rgb(36, 115, 218) , rgb(86, 144, 219));
+}
+.token-field input {
+    width: 45dvw;
+       border-radius: 5px;
+       border: none;
+       outline: none;
+       background-color: white;
+       font-size: calc(var(--padding) * 1.3);
+       margin-top: 0.5ch;
+       padding: calc(var(--padding) * 0.2);
+       width: 94%;
+       text-indent: 1ch;
+    }
+    .token-field h1 {
+        font-size: calc(var(--padding) * 1.3);
+    color: white;
+}
+.token-field button:active {
+    transform: scale(0.8);
+}
+.token-field button {
+    border: none;
+    outline: none;
+    background-color: rgb(20, 85, 182);
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+    
+    height: calc((var(--padding) * 1.3) + (var(--padding) * 0.8));
+    margin-left: 1%;
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: white;
+    font-size: calc((var(--padding) * 1.1));
+}
+.token-field div {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: fit-content;
+}
+img {
+    width: 100%;
+}
+.input-text .head {
+    width: 100%;
+    
+}
+.input-text .head img {
+    border-radius: 5px;
+    
+}
+.input-single-file .head {
+    width: 100%;
+    
+}
+.input-single-file .head img {
+    border-radius: 5px;
+    
+}
+.content-container .head {
+    width: 100%;
+    
+}
+.content-container .head img {
+    border-radius: 5px;
+    
+}
+.input-text h1 {
+    font-size: calc(var(--padding) * 2);
+    color: white;
+}
+.content-container-heading {
+    font-size: calc(var(--padding) * 2);
+    color: white;
+}
+.input-text h2 {
+    font-size: calc(var(--padding) * 1.4);
+    color: rgb(220, 220, 220);
+}
+.content-container h2 {
+    font-size: calc(var(--padding) * 1.4);
+    color: rgb(220, 220, 220);
+}
+.input-single-file h2 {
+    font-size: calc(var(--padding) * 1.4);
+    color: rgb(220, 220, 220);
+}
+.input-text h1 {
+    font-size: calc(var(--padding) * 2);
+    color: white;
+}
+.input-single-file-heading {
+    font-size: calc(var(--padding) * 2);
+    color: white;
+}
+.input-gallery-file-heading {
+    font-size: calc(var(--padding) * 2);
+    color: white;
+}
+
+.input-text input {
+    font-size: calc(var(--padding) * 2);
+    padding: calc(var(--padding) * 0.2);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-top: 0.5ch;
+    width: 100%;
+}
+.element-container {
+    width: 96%;
+    height: calc(100% - (var(---nav--CH) * 1.5));
+    display: flex;
+    
+    flex-wrap: wrap;
+    align-content: start;
+
+    justify-content: center;
+    
+}
+.token-field-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.input-controls {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    align-self: center;
+    --padding: calc((var(---page--CH) + var(---page--CW)) / 150);
+    margin-top: var(--padding);
+}
+.input-controls .icon {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    padding: calc(var(--padding));
+    font-size: calc(var(--padding));
+    border-radius: 5px;
+    cursor: pointer;
+}
+.input-controls .icon-text {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    padding: calc(var(--padding));
+    font-size: calc(var(--padding));
+    border-radius: 5px;
+    cursor: pointer;
+}
+.input-controls .text {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    padding: calc(var(--padding));
+    font-size: calc(var(--padding) * 1.2);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.input-controls .icon-text i {
+    margin: 0 0.5ch;
+}
+.input-controls .icon-text span {
+    font-size: calc(var(--padding) * 1.2);
+    margin: 0 0.5ch;
+}
+.input-controls .icon:hover {
+    background-color: rgb(68, 67, 67 , 0.5);
+}
+.input-controls .icon-text:hover {
+    background-color: rgba(5, 5, 5, 0.5);
+}
+.input-controls .text:hover {
+    background-color: rgba(68, 41, 41, 0.5);
+}
+.input-controls button {
+    transition: 100ms;
+}
+.input-controls button:active {
+    transform: scale(0.8);
+}
+.input-text div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.input-single-file-pick input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+.input-single-file-pick {
+    position: relative;
+    width: calc(100% - (var(--padding) * 2));
+    min-height: 10dvh;
+    background-color: rgba(3, 3, 3, 0.5);
+    border-radius: 5px;
+    padding: var(--padding);
+    align-self: center;
+    margin-top: var(--padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.input-single-file-pick i {
+    font-size: calc(var(--padding) * 2);
+    margin: 1ch;
+    color: white;
+}
+.input-single-file-pick span {
+    font-size: calc(var(--padding) * 1.5);
+    color: white;
+}
+
+
+
+
+.input-gallery-file-pick input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+.input-gallery-file-pick {
+    position: relative;
+    width: calc(100% - (var(--padding) * 2));
+    min-height: 10dvh;
+    background-color: rgba(3, 3, 3, 0.5);
+    border-radius: 5px;
+    padding: var(--padding);
+    align-self: center;
+    margin-top: var(--padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.input-gallery-file-pick i {
+    font-size: calc(var(--padding) * 2);
+    margin: 1ch;
+    color: white;
+}
+.input-gallery-file-pick span {
+    font-size: calc(var(--padding) * 1.5);
+    color: white;
+}
+.input-image-previews {
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+.input-image-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: calc(var(--padding) / 2) ;
+    width: calc(100% - var(---padding));
+    
+    border-radius: 5px;
+    overflow: hidden;
+}
+.input-image-previews .input-image-preview:first-child {
+
+margin-top: calc(var(--padding) / 2) ;
+}
+.layout-desktop ._single-image-picker-input-container--picked {
+    background-color: rgba(52, 77, 50, 0.685);
+}
+
+._single-file-picker-picked-content {
+    display: none;
+}
+._single-image-picker-input-container--picked ._single-file-picker-picked-content {
+ display: contents;   
+}
+._single-image-picker-input-container--picked ._single-file-picker-pick-content {
+ display: none;   
+}
+.input-image-preview img {
+    display: none;
+    border-radius: 5px;
+}
+._image-preview--open {
+    background-color: rgb(245 , 245 , 245 , 1);
+    padding: calc(var(--padding) * 0.5);
+}
+._image-preview--open .title-head {
+    background-color: transparent !important;
+}
+._image-preview--open .title-head i{
+    transform: rotate(90deg);
+}
+._image-preview--open img{
+display: inline-block;
+}
+._image-preview--open ._controls {
+display: flex;
+}
+.input-image-preview-controls {
+    display: none;
+}
+.input-image-preview .title-head {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: var(--padding);
+    margin-bottom: var(--padding);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.input-image-preview .title-head h1 {
+    font-size: calc(var(--padding) * 1.4);
+    width: 100%;
+    max-height: 3lh;
+    overflow-y: scroll;
+}
+.input-image-preview .title-head i {
+    font-size: calc(var(--padding) * 1.4);
+}
+.input-image-preview-controls {
+    flex-wrap: wrap;
+    align-content: start;
+    justify-content: center;
+    background-color: rgb(0 , 0 ,0 , 0.3);
+    
+    width: calc(100% );
+    margin-top: var(--padding);
+    border-radius: 5px;
+    max-height: 15dvh;
+    overflow-y: scroll;
+}
+.input-image-preview-controls button {
+    background-color: white;
+    margin: calc(var(--padding) / 2);
+    border: none;
+    outline: none;
+    padding: calc(var(--padding) * 0.5);
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: calc(var(--padding) * 1.3);
+    color: #383838;
+    transition: 100ms;
+}
+.input-image-preview-controls button span {
+    margin-right: 0.5ch;
+    font-weight: 700;
+}
+.input-image-preview-controls .delete {
+    background-color: rgb(148, 22, 22);
+    color: white;
+}
+.input-image-preview-controls .replace {
+    position: relative;
+    background-color: rgb(44, 114, 206);
+    color: white;
+}
+.input-image-preview-controls .delete:hover {
+    color: rgb(148, 22, 22);
+    background-color: white;
+}
+.input-image-preview-controls .replace:hover {
+    color: rgb(44, 114, 206);
+    background-color: white;
+}
+.input-image-preview-controls button:active {
+    transform: scale(0.9);
+}
+.input-image-preview-controls .replace input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer !important;
+}
+.content-container-add-btn {
+    border: none;
+    outline: none;
+    background-color: rgba(52, 77, 50, 0.685);
+    max-width: calc(100% );
+    min-width: 50%;
+    align-self: center;
+    padding: var(--padding) calc(var(--padding) * 2);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+.modals {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0 , 0 , 0 , 0.7);
+    z-index: +999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.modals .content-modal {
+    position: absolute;
+    --padding: calc((var(---page--CH) + var(---page--CW)) / 150);
+    height: calc(100% - (var(--padding) * 7));
+    width: calc(100% - (var(--padding) * 7));
+    padding: var(--padding);
+    background-color: white;
+    border-radius: 25px;
+
+flex-wrap: wrap;
+align-content: start;
+align-items: flex-start;
+overflow-y: auto;
+}
+._modals-container--open {
+    display: flex;
+}
+.modal-heading {
+    position: relative;
+    width: 100%;
+    font-size: calc(var(--padding) * 3);
+    max-height: 20%;
+    
+}
+.modal-close-btn {
+    position: fixed;
+    top: calc((100% - (100% - (var(--padding) * 7))) / 2);
+    right: calc((100% - (100% - (var(--padding) * 7))) / 2);
+    border: none;
+    outline: none;
+    background-color: transparent;
+font-size: calc(var(--padding) * 1.5);
+padding: var(--padding);
+background-color: rgb(32, 32, 32);
+border-radius: 25px;
+color: white;
+cursor: pointer;
+}
+.modal-heading span {
+    display: inline-flex;
+    width: 85%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+.content-container-add-bar {
+background-color: white;
+    position: fixed;
+    bottom: calc((100% - (100% - (var(--padding) * 7))) / 2);
+    width: calc(100% - (var(--padding) * 7));
+    height: 10%;
+    border-radius: 25px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.content-container-add-bar .error {
+    position: relative;
+    font-size: calc(var(--padding) * 1.5);
+    max-height: 100%;
+    overflow-y: auto;
+    width: 80%;
+font-weight: 400;
+color: rgb(145, 25, 25);
+visibility: hidden;
+}
+.content-container-add-bar ._error--active {
+    visibility: visible;
+}
+.content-container-add-bar button {
+    
+    border: none;
+    outline: none;
+    padding: var(--padding);
+    background-color: rgb(17, 128, 35);
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body class="page theme--light">
+    
+    <section class="___layout layout-desktop @page-layout" data-layout="desktop">
+       <section class="modals _modals-container">
+<section class="content-modal _modal" data-modal-name="content-modal">
+<h1 class="modal-heading">
+    <span>
+        New Project
+    </span>
+    <button class="modal-close-btn _modals-container-closer">
+    <i class="fa-solid fa-x"></i>
+</button>
+</h1>
+<section class="input-text" style="width: 40%;" data-code="introduction-heading-1">
+            
+            <div class="input-input-container _input-text-container">
+
+                <h1>Heading 1</h1>
+                <h2>Prefer 20 words or less</h2>
+                <input type="text">
+            <section class="input-controls">
+                <!-- <button class="icon"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                <button class="icon-text"><i class="fa-solid fa-arrow-rotate-right"></i><span>Redo</span></button>
+                <button class="text">Redo</button>
+                 -->
+                 <button class="icon _undo-text"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                 <button class="icon _redo-text"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                </section>
+            </div>
+        </section>
+        <section class="input-single-file _input-single-file" style="width: 40%;" data-code="thumbnail">
+            
+            <h1 class="input-single-file-heading">
+                Thumbnail
+            </h1>
+            
+            <button class="input-single-file-pick _single-image-picker-input-container" >
+                <input type="file" class="_input-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span>File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+         <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery">
+        
+            <h1 class="input-gallery-file-heading">
+                Gallery
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" multiple class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+         <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery">
+        
+            <h1 class="input-gallery-file-heading">
+                Gallery
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" multiple class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+         <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery">
+        
+            <h1 class="input-gallery-file-heading">
+                Gallery
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" multiple class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+         <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery">
+        
+            <h1 class="input-gallery-file-heading">
+                Gallery
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" multiple class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+         <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery">
+        
+            <h1 class="input-gallery-file-heading">
+                Gallery
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" multiple class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+         <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery">
+        
+            <h1 class="input-gallery-file-heading">
+                Gallery
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" multiple class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+         <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery">
+        
+            <h1 class="input-gallery-file-heading">
+                Gallery
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" multiple class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+         <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery">
+        
+            <h1 class="input-gallery-file-heading">
+                Gallery
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" multiple class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+         <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery">
+        
+            <h1 class="input-gallery-file-heading">
+                Gallery
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" multiple class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+        <section class="content-container-add-bar">
+<!-- _error--active -->
+            <h1 class="error ">
+                <i class="fa-solid fa-circle-info"></i>
+            <span> You must choose a name</span></h1>
+            <button><span>Add</span> <i class="fa-solid fa-plus"></i></button>
+        </section>
+</section>
+       </section> 
+        <section class="nav">
+            <h1 class="nav-heading">Control Pannel</h1>
+
+            <section class="theme-toggle _theme-toggle _light--active">
+          
+            <button class="dark _toggle-dark-mode">
+
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="light _toggle-light-mode">
+
+                <i class="fa-regular fa-moon"></i>
+            </button>
+          
+            </section>
+        </section>
+<section class="spacer spacer-nav"></section>
+<section class="element-container">
+
+<section class="token-field-container">
+
+    <section class="token-field">
+        <h1>Github Token</h1>
+        <div>
+
+            <input type="password" class="_github-token" value="s">
+            <button class="_token-save-btn">S</button>
+        </div>
+    </section>
+</section>
+
+        <section class="input-text" style="width: 40%;" data-code="introduction-heading-1">
+            <section class="head">
+                <img src="./Screenshot 2026-10-16 013727.png" alt="">
+            </section>
+            <div class="input-input-container _input-text-container">
+
+                <h1>Heading 1</h1>
+                <h2>Prefer 20 words or less</h2>
+                <input type="text">
+            <section class="input-controls">
+                <!-- <button class="icon"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                <button class="icon-text"><i class="fa-solid fa-arrow-rotate-right"></i><span>Redo</span></button>
+                <button class="text">Redo</button>
+                 -->
+                 <button class="icon _undo-text"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                 <button class="icon _redo-text"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                </section>
+            </div>
+        </section>
+        <section class="input-single-file _input-single-file" style="width: 40%;" data-code="thumbnail">
+            <section class="head">
+                <img src="./Screenshot 2026-10-16 013727.png" alt="">
+            </section>
+            <h1 class="input-single-file-heading">
+                Thumbnail
+            </h1>
+            
+            <button class="input-single-file-pick _single-image-picker-input-container" >
+                <input type="file" class="_input-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span>File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+        
+        <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery">
+            <section class="head">
+                <img src="./Screenshot 2026-10-16 013727.png" alt="">
+            </section>
+            <h1 class="input-gallery-file-heading">
+                Gallery
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+        <section class="input-gallery-file _input-gallery-file" style="width: 40%;" data-code="image-gallery-2">
+            <section class="head">
+                <img src="./Screenshot 2026-10-16 013727.png" alt="">
+            </section>
+            <h1 class="input-gallery-file-heading">
+                Gallery 2
+            </h1>
+            
+            <button class="input-gallery-file-pick _single-image-picker-input-container" >
+                <input type="file" class="_input-gallery-image-preview-picker">
+                <section class="_single-file-picker-pick-content">
+
+                    <i class="fa-solid fa-photo-film"></i>
+                    <span>Pick a File</span>
+                </section>
+                <section class="_single-file-picker-picked-content">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="_text">File Picked!</span>
+                </section>
+            </button>
+            <section class="input-image-previews _input-image-preview-container">
+
+            </section>
+        </section>
+        <section class="content-container" style="max-width: 70%; min-width: 40%;">
+            <section class="head">
+                <img src="./Screenshot 2026-10-16 013727.png" alt="">
+            </section>
+            <h1 class="content-container-heading">
+                Projects
+            </h1>
+            <button class="content-container-add-btn">
+              <i class="fa-solid fa-plus"></i>  <span>Add</span>
+            </button>
+        </section>
+        
+    <!-- <section class="input-list">
+        <section class="input-list-head">
+            <img src="./Screenshot 2026-10-16 013727.png" alt="" srcset="">
+        </section>
+        <section class="input-list-heading">
+            <h1>Projects</h1>
+            <button>
+                <i class="fa-solid fa-circle-plus"></i>
+            </button>
+        </section>
+    </section>
+       -->
+        </section>
+    </section>
+    <section class="___layout layout-phone @page-layout" data-layout="phone">
+phone
+    </section>
+
+
+    <script src="./engine.js" data-sepration="true"></script>
+    <script src="./pannel.js"></script>
+</body>
+</html>
+
+<!-- go at pointer::1 in js pannel and write code to detect if the same name image prevuiew
+ exists already or not? if yes then skip even gernating url for it  -->
